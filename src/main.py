@@ -10,6 +10,7 @@ audio_folder = "audio_files"
 reader = AudioReader()
 parser = MetadataParser()
 analyzer = AudioAnalyzer()
+tracks = []
 
 for file_name in os.listdir(audio_folder):
 
@@ -47,4 +48,15 @@ track = AudioMetadata(
     channels=channels
 )
 
+tracks.append(track)
+
 print(track.to_dict())
+
+from exporters.json_exporter import JsonExporter
+
+exporter = JsonExporter()
+
+exporter.export(
+    tracks,
+    "output/metadata.json"
+)
