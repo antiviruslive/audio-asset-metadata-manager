@@ -1,12 +1,15 @@
 import os
 
+from models.audio_metadata import AudioMetadata
 from readers.audio_reader import AudioReader
 from analyzers.metadata_parser import MetadataParser
+from analyzers.audio_analyzer import AudioAnalyzer
 
 audio_folder = "audio_files"
 
 reader = AudioReader()
 parser = MetadataParser()
+analyzer = AudioAnalyzer()
 
 for file_name in os.listdir(audio_folder):
 
@@ -27,4 +30,21 @@ for file_name in os.listdir(audio_folder):
 
     normalized = parser.parse_tags(audio.tags)
 
-    print(normalized)
+duration = analyzer.get_duration(audio)
+sample_rate = analyzer.get_sample_rate(audio)
+channels = analyzer.get_channels(audio)
+
+track = AudioMetadata(
+    filename=file_name,
+    title=normalized.get("title"),
+    artist=normalized.get("artist"),
+    album=normalized.get("album"),
+    genre=normalized.get("genre"),
+    year=normalized.get("year"),
+    track_number=normalized.get("track_number"),
+    duration=duration,
+    sample_rate=sample_rate,
+    channels=channels
+)
+
+print(track.to_dict())
