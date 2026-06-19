@@ -3,6 +3,7 @@ from analyzers.metadata_parser import MetadataParser
 from analyzers.audio_analyzer import AudioAnalyzer
 from analyzers.bpm_analyzer import BPMAnalyzer
 from models.audio_metadata import AudioMetadata
+from analyzers.key_analyzer import KeyAnalyzer
 
 
 class AudioAssetService:
@@ -13,6 +14,7 @@ class AudioAssetService:
         self.parser = MetadataParser()
         self.analyzer = AudioAnalyzer()
         self.bpm_analyzer = BPMAnalyzer()
+        self.key_analyzer = KeyAnalyzer()
 
     def process_file(self, file_path, file_name):
 
@@ -27,6 +29,7 @@ class AudioAssetService:
         sample_rate = self.analyzer.get_sample_rate(audio)
         channels = self.analyzer.get_channels(audio)
         bpm = self.bpm_analyzer.detect_bpm(file_path)
+        key = self.key_analyzer.detect_key(file_path)
 
         asset = AudioMetadata(
             filename=file_name,
@@ -39,7 +42,8 @@ class AudioAssetService:
             duration=duration,
             sample_rate=sample_rate,
             channels=channels,
-            bpm=bpm
+            bpm=bpm,
+            key=key
         )
 
         return asset
