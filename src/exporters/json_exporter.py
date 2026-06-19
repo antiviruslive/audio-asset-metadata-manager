@@ -7,7 +7,7 @@ class JsonExporter:
 
         data = []
 
-        for track in tracks:
+        for asset in audio_assets:
             data.append(track.to_dict())
 
         with open(output_file, "w", encoding="utf-8") as file:

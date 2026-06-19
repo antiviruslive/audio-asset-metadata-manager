@@ -4,13 +4,14 @@ from models.audio_metadata import AudioMetadata
 from readers.audio_reader import AudioReader
 from analyzers.metadata_parser import MetadataParser
 from analyzers.audio_analyzer import AudioAnalyzer
+from exporters.json_exporter import JsonExporter
 
 audio_folder = "audio_files"
 
 reader = AudioReader()
 parser = MetadataParser()
 analyzer = AudioAnalyzer()
-tracks = []
+audio_assets = []
 
 for file_name in os.listdir(audio_folder):
 
@@ -51,8 +52,6 @@ track = AudioMetadata(
 tracks.append(track)
 
 print(track.to_dict())
-
-from exporters.json_exporter import JsonExporter
 
 exporter = JsonExporter()
 
