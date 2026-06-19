@@ -2,6 +2,7 @@ import os
 
 from services.audio_asset_service import AudioAssetService
 from exporters.json_exporter import JsonExporter
+from exporters.csv_exporter import CsvExporter 
 
 audio_folder = "audio_files"
 
@@ -39,3 +40,6 @@ exporter.export(
     audio_assets,
     "output/metadata.json"
 )
+
+csv_exporter = CsvExporter()
+csv_exporter.export(audio_assets, "output/metadata.csv")
