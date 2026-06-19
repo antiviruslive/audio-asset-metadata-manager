@@ -1,10 +1,12 @@
 import os
 
 from services.audio_asset_service import AudioAssetService
+from exporters.json_exporter import JsonExporter
 
 audio_folder = "audio_files"
 
 service = AudioAssetService()
+exporter = JsonExporter()
 
 audio_assets = []
 
@@ -30,3 +32,10 @@ for file_name in os.listdir(audio_folder):
     audio_assets.append(asset)
 
     print(asset.to_dict())
+
+print("TOTAL ASSETS:", len(audio_assets))
+
+exporter.export(
+    audio_assets,
+    "output/metadata.json"
+)
