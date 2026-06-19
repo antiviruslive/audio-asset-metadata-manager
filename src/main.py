@@ -5,6 +5,8 @@ from exporters.json_exporter import JsonExporter
 from exporters.csv_exporter import CsvExporter 
 from analyzers.batch_analytics import BatchAnalytics
 from exporters.analytics_exporter import AnalyticsExporter
+from exporters.catalog_exporter import CatalogExporter  
+
 
 audio_folder = "audio_files"
 
@@ -52,3 +54,6 @@ analytics = batch.analyze(audio_assets)
 analytics_exporter = AnalyticsExporter()
 analytics_exporter.print_summary(analytics)
 analytics_exporter.export(analytics, "output/analytics.json")
+
+catalog_exporter = CatalogExporter()
+catalog_exporter.export(audio_assets, analytics, "output/catalog.html")
