@@ -33,7 +33,7 @@ for file_name in os.listdir(audio_folder):
 
     print(asset.to_dict())
 
-print("TOTAL ASSETS:", len(audio_assets))
+
 
 exporter.export(
     audio_assets,

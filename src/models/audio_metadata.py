@@ -11,7 +11,8 @@ class AudioMetadata:
         track_number,
         duration,
         sample_rate,
-        channels
+        channels,
+        bpm=None
     ):
 
         self.filename = filename
@@ -24,6 +25,7 @@ class AudioMetadata:
         self.duration = duration
         self.sample_rate = sample_rate
         self.channels = channels
+        self.bpm = bpm
 
     def to_dict(self):
 
@@ -35,7 +37,8 @@ class AudioMetadata:
             "genre": self.genre,
             "year": self.year,
             "track_number": self.track_number,
-            "duration": self.duration,
+            "duration": round(self.duration, 2),
             "sample_rate": self.sample_rate,
-            "channels": self.channels
+            "channels": self.channels,
+            "bpm": self.bpm
         }
