@@ -3,6 +3,8 @@ import os
 from services.audio_asset_service import AudioAssetService
 from exporters.json_exporter import JsonExporter
 from exporters.csv_exporter import CsvExporter 
+from analyzers.batch_analytics import BatchAnalytics
+from exporters.analytics_exporter import AnalyticsExporter
 
 audio_folder = "audio_files"
 
@@ -43,3 +45,10 @@ exporter.export(
 
 csv_exporter = CsvExporter()
 csv_exporter.export(audio_assets, "output/metadata.csv")
+
+batch = BatchAnalytics()
+analytics = batch.analyze(audio_assets)
+
+analytics_exporter = AnalyticsExporter()
+analytics_exporter.print_summary(analytics)
+analytics_exporter.export(analytics, "output/analytics.json")
