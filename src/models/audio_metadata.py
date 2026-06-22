@@ -2,18 +2,18 @@ class AudioMetadata:
 
     def __init__(
         self,
-        filename,
-        title,
-        artist,
-        album,
-        genre,
-        year,
-        track_number,
-        duration,
-        sample_rate,
-        channels,
-        bpm=None,
-        key=None
+        filename: str,
+        title: str | None,
+        artist: str | None,
+        album: str | None,
+        genre: str | None,
+        year: str | None,
+        track_number: str | None,
+        duration: float,
+        sample_rate: int,
+        channels: int,
+        bpm: float | None = None,
+        key: str | None = None
     ):
 
         self.filename = filename
@@ -29,7 +29,7 @@ class AudioMetadata:
         self.bpm = bpm
         self.key = key
 
-    def to_dict(self):
+    def to_dict(self) -> dict:
 
         return {
             "filename": self.filename,

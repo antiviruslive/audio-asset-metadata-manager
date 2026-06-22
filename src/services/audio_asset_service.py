@@ -16,7 +16,11 @@ class AudioAssetService:
         self.bpm_analyzer = BPMAnalyzer()
         self.key_analyzer = KeyAnalyzer()
 
-    def process_file(self, file_path, file_name):
+    def process_file(
+        self,
+        file_path: str,
+        file_name: str
+    ) -> AudioMetadata | None:
 
         audio = self.reader.read(file_path)
 
