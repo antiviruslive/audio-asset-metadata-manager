@@ -4,7 +4,10 @@ import numpy as np
 
 class BPMAnalyzer:
 
-    def detect_bpm(self, file_path):
+    def detect_bpm(
+        self,
+        file_path: str
+    ) -> float | None:
 
         try:
 

@@ -4,7 +4,6 @@ import numpy as np
 
 class KeyAnalyzer:
 
-    # Perfis de Krumhansl-Schmuckler para detecção de tonalidade
     MAJOR_PROFILE = np.array([6.35, 2.23, 3.48, 2.33, 4.38, 4.09,
                                2.52, 5.19, 2.39, 3.66, 2.29, 2.88])
 
@@ -14,7 +13,10 @@ class KeyAnalyzer:
     NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F',
                   'F#', 'G', 'G#', 'A', 'A#', 'B']
 
-    def detect_key(self, file_path):
+    def detect_key(
+    self,
+    file_path: str
+) -> str | None:
 
         try:
 
@@ -24,11 +26,9 @@ class KeyAnalyzer:
                 mono=True
             )
 
-            # Extrai o chromagram (energia por nota musical)
             chromagram = librosa.feature.chroma_cqt(y=y, sr=sr)
             chroma_mean = np.mean(chromagram, axis=1)
 
-            # Correlaciona com os perfis maior e menor para cada nota raiz
             major_scores = []
             minor_scores = []
 
