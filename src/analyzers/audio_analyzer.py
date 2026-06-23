@@ -1,20 +1,20 @@
 class AudioAnalyzer:
 
-    def get_duration(self, audio):
+    def get_duration(self, audio) -> float:
 
         try:
             return audio.info.length
         except:
-            return 0
+            return 0.0
 
-    def get_sample_rate(self, audio):
+    def get_sample_rate(self, audio) -> int:
 
         try:
             return audio.info.sample_rate
         except:
             return 0
 
-    def get_channels(self, audio):
+    def get_channels(self, audio) -> int:
 
         try:
             return audio.info.channels
