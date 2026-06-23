@@ -2,7 +2,10 @@
 
 A professional Python application for extracting, analyzing, and organizing audio asset metadata.
 
-This project was developed to process audio files, extract embedded metadata, analyze technical audio properties, detect BPM (tempo), detect musical key, and export structured data into JSON, CSV, and HTML formats for cataloging and asset management workflows.
+This project processes audio files, extracts embedded metadata, analyzes technical audio properties, detects BPM (tempo), identifies musical key signatures, generates analytics reports, and exports structured datasets in multiple formats.
+
+Built with a modular architecture, automated testing, and continuous integration workflows.
+
 
 ---
 
@@ -85,10 +88,45 @@ Generates a dark-themed visual HTML catalog with an analytics dashboard and a fu
 
 ---
 
+### Software Quality & Engineering
+
+The project follows professional software engineering practices:
+
+* Object-Oriented Design
+* Modular Architecture
+* Type Hints
+* Automated Testing with Pytest
+* Continuous Integration with GitHub Actions
+* Service Layer Pattern
+* Clean Separation of Responsibilities
+
+Current automated test suite:
+
+* AudioMetadata
+* AudioAnalyzer
+* BPMAnalyzer
+* KeyAnalyzer
+
+All tests run automatically on every push through GitHub Actions.
+
+---
+
 ## Project Architecture
 
 ```text
 audio-asset-metadata-manager
+│
+├── .github/
+│   └── workflows/
+│       └── python-tests.yml
+│
+├── tests/
+│   ├── test_audio_metadata.py
+│   ├── test_audio_analyzer.py
+│   ├── test_bpm_analyzer.py
+│   └── test_key_analyzer.py
+│
+├── pytest.ini
 │
 ├── audio_files/
 │
@@ -135,7 +173,11 @@ audio-asset-metadata-manager
 * Mutagen
 * Librosa
 * NumPy
-* JSON / CSV
+* Pytest
+* GitHub Actions
+* JSON
+* CSV
+* HTML
 
 ---
 
@@ -235,6 +277,52 @@ Generated files:
 
 ---
 
+## Automated Testing
+
+The project includes automated tests using Pytest.
+
+Run all tests:
+
+```bash
+pytest
+```
+
+Current coverage includes:
+
+* Metadata Model
+* Audio Analyzer
+* BPM Detection
+* Musical Key Detection
+
+Example output:
+
+```text
+============================
+4 passed
+============================
+```
+
+---
+
+## Continuous Integration
+
+This repository uses GitHub Actions for Continuous Integration.
+
+Every push and pull request automatically:
+
+1. Creates a clean environment
+2. Installs dependencies
+3. Runs the complete test suite
+4. Reports success or failure
+
+Workflow:
+
+```text
+Push → GitHub Actions → Pytest → Build Status
+```
+
+---
+
 ## Future Enhancements
 
 Planned features:
@@ -253,12 +341,18 @@ This project demonstrates:
 * Object-Oriented Programming (OOP)
 * Python Application Architecture
 * Service Layer Pattern
-* Audio Signal Analysis (BPM, Musical Key, Chromagram)
+* Audio Signal Analysis
 * Music Information Retrieval (MIR)
 * Metadata Processing
-* Multi-format Data Export (JSON, CSV, HTML)
+* BPM Detection
+* Musical Key Detection
+* Data Analytics
+* Multi-format Export (JSON, CSV, HTML)
+* Automated Testing with Pytest
+* Continuous Integration (CI/CD)
 * Git Version Control
-* GitHub Project Management
+* GitHub Actions
+* Software Engineering Best Practices
 
 ---
 
